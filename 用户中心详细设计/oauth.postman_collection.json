@@ -1,0 +1,542 @@
+{
+	"info": {
+		"_postman_id": "3d31623b-027c-45af-9920-2b662b3192dd",
+		"name": "oauth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取授权码",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/authorize?response_type=code&client_id=client&redirect_uri=https://www.baidu.com",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code",
+							"description": "授权类型"
+						},
+						{
+							"key": "client_id",
+							"value": "client",
+							"description": "客户端id"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://www.baidu.com",
+							"description": "重定向地址"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取token 授权码模式",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "client",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"description": "授权类型",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "NI5u2F",
+							"description": "授权码",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://www.baidu.com",
+							"description": "重定向地址",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取token 密码模式",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "client",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "授权类型",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"description": "用户名",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"description": "密码",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "all",
+							"description": "授权范围",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刷新token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "client",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "授权类型",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiIxOWM0NzBiYS01NDY2LTQ5OTUtYWM2My04ZTVkYjQzMDY2NzkiLCJleHAiOjE2NjE2NzI5MTcsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2NoYW5nZVBhc3N3b3JkIiwiUE9TVDsvaGVsbG8iXSwianRpIjoiNTU2ZTY0ZGYtOGU0MS00MzFlLWFkNGUtZWZkYzNhM2MzNzAwIiwiY2xpZW50X2lkIjoiY2xpZW50IiwiZW5oYW5jZSI6IuWinuW8uueahOS_oeaBryJ9.ljDSeYM6vV5L7ZMFFrA-iISaSt8z06i_JuhXDPmdHh8",
+							"description": "刷新token",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除token",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/remove_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NTE2ODE2NTMsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2NoYW5nZVBhc3N3b3JkIiwiUE9TVDsvaGVsbG8iLCJHRVQ7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2dldEN1cnJlbnRVc2VyIl0sImp0aSI6IjY5YWNhYmYyLTRkYzctNDcxZi1hZjk1LWNiNGI3ZTFjMjYxNSIsImNsaWVudF9pZCI6ImNsaWVudCIsImVuaGFuY2UiOiLlop7lvLrnmoTkv6Hmga8ifQ.7njMesWU26O99EFjQ4slfSgIIJHqZqVH0zD3QA9nCiA",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"remove_token"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NTE2ODE2NTMsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2NoYW5nZVBhc3N3b3JkIiwiUE9TVDsvaGVsbG8iLCJHRVQ7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2dldEN1cnJlbnRVc2VyIl0sImp0aSI6IjY5YWNhYmYyLTRkYzctNDcxZi1hZjk1LWNiNGI3ZTFjMjYxNSIsImNsaWVudF9pZCI6ImNsaWVudCIsImVuaGFuY2UiOiLlop7lvLrnmoTkv6Hmga8ifQ.7njMesWU26O99EFjQ4slfSgIIJHqZqVH0zD3QA9nCiA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "校验token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NTE2NzgxMTgsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3VzZXIvY2hhbmdlUGFzc3dvcmQiLCJQT1NUOy9oZWxsbyJdLCJqdGkiOiIwNGIyYjBlYS01YmY0LTRhMTktODBmYy0yOWI1YmNjZGE1N2MiLCJjbGllbnRfaWQiOiJjbGllbnQiLCJlbmhhbmNlIjoi5aKe5by655qE5L-h5oGvIn0.bnbyutAWEe30K2vF-pWvidZebVFNf5M-6s3yZoC1KjQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/verify_token?method=POST&uri=/hello",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"verify_token"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "POST"
+						},
+						{
+							"key": "uri",
+							"value": "/hello"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "验证token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "client",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/check_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NTE2ODE4NTYsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2NoYW5nZVBhc3N3b3JkIiwiUE9TVDsvaGVsbG8iLCJHRVQ7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2dldEN1cnJlbnRVc2VyIl0sImp0aSI6IjYzNzQ1MjVhLWVmNDEtNGJjNy04YWQ0LTk1YmEwOTFkMTA0NyIsImNsaWVudF9pZCI6ImNsaWVudCIsImVuaGFuY2UiOiLlop7lvLrnmoTkv6Hmga8ifQ.5mNylhtK4kefpRYEe4T0F9Ijvk7biAPgcRLtnacKypM",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"check_token"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NTE2ODE4NTYsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2NoYW5nZVBhc3N3b3JkIiwiUE9TVDsvaGVsbG8iLCJHRVQ7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2dldEN1cnJlbnRVc2VyIl0sImp0aSI6IjYzNzQ1MjVhLWVmNDEtNGJjNy04YWQ0LTk1YmEwOTFkMTA0NyIsImNsaWVudF9pZCI6ImNsaWVudCIsImVuaGFuY2UiOiLlop7lvLrnmoTkv6Hmga8ifQ.5mNylhtK4kefpRYEe4T0F9Ijvk7biAPgcRLtnacKypM"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改用户密码",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NTE2ODE4NTYsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2NoYW5nZVBhc3N3b3JkIiwiUE9TVDsvaGVsbG8iLCJHRVQ7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2dldEN1cnJlbnRVc2VyIl0sImp0aSI6IjYzNzQ1MjVhLWVmNDEtNGJjNy04YWQ0LTk1YmEwOTFkMTA0NyIsImNsaWVudF9pZCI6ImNsaWVudCIsImVuaGFuY2UiOiLlop7lvLrnmoTkv6Hmga8ifQ.5mNylhtK4kefpRYEe4T0F9Ijvk7biAPgcRLtnacKypM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/user/changePassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"user",
+						"changePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/getCurrentUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NTE2ODE4NTYsImF1dGhvcml0aWVzIjpbIlBPU1Q7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2NoYW5nZVBhc3N3b3JkIiwiUE9TVDsvaGVsbG8iLCJHRVQ7L3Byb2Nlc3NpbmcvdXNlci91c2VyL2dldEN1cnJlbnRVc2VyIl0sImp0aSI6IjYzNzQ1MjVhLWVmNDEtNGJjNy04YWQ0LTk1YmEwOTFkMTA0NyIsImNsaWVudF9pZCI6ImNsaWVudCIsImVuaGFuY2UiOiLlop7lvLrnmoTkv6Hmga8ifQ.5mNylhtK4kefpRYEe4T0F9Ijvk7biAPgcRLtnacKypM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/user/getCurrentUser",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"user",
+						"getCurrentUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取公钥",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "client",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/processing/user/oauth/token_key",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"processing",
+						"user",
+						"oauth",
+						"token_key"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"//对变量进行清空处理",
+					"pm.globals.unset(\"str\");",
+					"pm.globals.unset(\"md5\");",
+					"",
+					"var str = \"Postman中对请求参数进行MD5摘要计算。\";",
+					"postman.setGlobalVariable(\"str\",str);",
+					"",
+					"//对字符串进行MD5摘要计算",
+					"var strmd5 = CryptoJS.MD5(str);",
+					"postman.setGlobalVariable('md5',strmd5);",
+					"",
+					"//控制台显示MD5计算结果",
+					"console.log(\"md5:\"+strmd5);",
+					"",
+					"",
+					"//对字符串进行SHA256摘要计算",
+					"var SHA256 = CryptoJS.SHA256(str);",
+					"postman.setGlobalVariable('SHA256',SHA256);",
+					"",
+					"//控制台显示MD5计算结果",
+					"console.log(\"SHA256:\"+SHA256);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

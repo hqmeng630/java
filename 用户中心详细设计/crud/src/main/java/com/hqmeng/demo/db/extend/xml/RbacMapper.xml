@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqmeng.demo.db.extend.mapper.RbacMapper">
+    <resultMap id="PermissionResultMap" type="com.hqmeng.demo.db.generator.bean.RbacPermission">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="method" jdbcType="VARCHAR" property="method" />
+        <result column="memo" jdbcType="VARCHAR" property="memo" />
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    </resultMap>
+    <sql id="Permission_Column_List">
+        id, `name`, url, `method`, memo, create_date, update_date
+    </sql>
+
+    <resultMap id="UserResultMap" type="com.hqmeng.demo.db.generator.bean.RbacUser">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="is_enabled" jdbcType="INTEGER" property="isEnabled" />
+        <result column="memo" jdbcType="VARCHAR" property="memo" />
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    </resultMap>
+    <sql id="User_Column_List">
+        id, username, `password`, is_enabled, memo, create_date, update_date
+    </sql>
+
+
+    <select id="selectPermissionIdByUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT
+        rp.permission_id
+        FROM
+        rbac_user u,
+        rbac_user_role ur,
+        rbac_role_permission rp
+        WHERE
+        u.username = #{username,jdbcType=VARCHAR}
+        AND u.id = ur.user_id
+        AND ur.role_id = rp.role_id
+    </select>
+
+    <select id="selectPermissionsByPermissionIds"  resultType="com.hqmeng.demo.db.generator.bean.RbacPermission">
+        select
+        <include refid="Permission_Column_List" />
+        from rbac_permission
+        where id in
+        <foreach collection="list" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectUserByUsername"  resultMap="UserResultMap">
+        select
+        <include refid="User_Column_List" />
+        from rbac_user
+        where username = #{username}
+    </select>
+</mapper>

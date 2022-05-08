@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /processing/user
+
+spring:
+#  mysql配置
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://os1.com:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true&amp;useSSL=false
+    username: root
+    password: 123456
+    initialization-mode: always
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath*:com/hqmeng/demo/db/**/xml/*.xml
+  type-aliases-package: com.hqmeng.demo.db.generator.bean
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+

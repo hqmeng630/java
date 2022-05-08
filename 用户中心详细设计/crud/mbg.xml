@@ -1,0 +1,56 @@
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="simple" targetRuntime="MyBatis3">
+        <!--可以使用``包括字段名，避免字段名与sql保留字冲突报错-->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!--覆盖生成XML文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+        <!-- 去掉注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="org.mariadb.jdbc.Driver"
+                        connectionURL="jdbc:mariadb://os1.com:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"
+                        userId="root"
+                        password="123456">
+            <!-- 解决不同数据库下存在同名表时，mapper.xml中方法重复问题 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.hqmeng.demo.db.generator.bean" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.hqmeng.demo.db.generator.xml" targetProject="src/main/java"/>
+        <javaClientGenerator targetPackage="com.hqmeng.demo.db.generator.mapper" type="XMLMAPPER"
+                             targetProject="src/main/java"/>
+
+
+        <!--生成对应表及类名 schema指数据库的用户名-->
+        <table schema="root" tableName="rbac_user" domainObjectName="RbacUser" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="root" tableName="rbac_role" domainObjectName="RbacRole" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="root" tableName="rbac_permission" domainObjectName="RbacPermission" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="root" tableName="rbac_user_role" domainObjectName="RbacUserRole" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="root" tableName="rbac_role_permission" domainObjectName="RbacRolePermission" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>
