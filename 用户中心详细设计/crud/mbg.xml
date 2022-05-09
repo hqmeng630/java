@@ -34,6 +34,7 @@
         <table schema="root" tableName="rbac_user" domainObjectName="RbacUser" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
+            <columnOverride column="accountNonLocked" property="accountNonLocked" javaType="java.lang.Boolean" />
         </table>
         <table schema="root" tableName="rbac_role" domainObjectName="RbacRole" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"

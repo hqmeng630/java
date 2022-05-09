@@ -11,7 +11,7 @@ public class Result<T> {
     //是否成功
     private Boolean success;
     //状态码
-    private Integer code;
+    private String code;
     //提示信息
     private String msg;
     //数据
@@ -29,7 +29,7 @@ public class Result<T> {
     public static Result otherError(Exception e){
         Result result = new Result();
         result.setMsg(e.getMessage());
-        result.setCode(500);
+        result.setCode("500");
         result.setSuccess(false);
         result.setData(null);
         return result;
@@ -38,7 +38,7 @@ public class Result<T> {
     public static Result success(Object body){
         Result result = new Result();
         result.setMsg("success");
-        result.setCode(200);
+        result.setCode("200");
         result.setSuccess(false);
         result.setData(body);
         return result;

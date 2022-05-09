@@ -1,5 +1,6 @@
 package com.hqmeng.demo.config.oauth;
 
+import com.hqmeng.demo.config.oauth.error.authorization.MyWebResponseExceptionTranslator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -53,7 +54,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .accessTokenConverter(jwtAccessTokenConverter)
                 .reuseRefreshTokens(false)
                 .tokenEnhancer(chain)
+                //自定义 /oauth/token 异常处理
+                .exceptionTranslator(new MyWebResponseExceptionTranslator())
         ;
+
 
 
     }
@@ -72,6 +76,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         // 访问 /oauth/check_token, 默认拒绝访问
         security.checkTokenAccess("isAuthenticated()");
         security.allowFormAuthenticationForClients();
+        ;
     }
 
 

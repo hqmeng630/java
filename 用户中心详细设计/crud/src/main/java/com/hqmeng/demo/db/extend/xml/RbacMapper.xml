@@ -58,4 +58,29 @@
         from rbac_user
         where username = #{username}
     </select>
+
+    <update id="updateByUsernameSelective" parameterType="com.hqmeng.demo.db.generator.bean.RbacUser">
+        update rbac_user
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="isEnabled != null">
+                is_enabled = #{isEnabled,jdbcType=INTEGER},
+            </if>
+            <if test="memo != null">
+                memo = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where username = #{username}
+    </update>
 </mapper>

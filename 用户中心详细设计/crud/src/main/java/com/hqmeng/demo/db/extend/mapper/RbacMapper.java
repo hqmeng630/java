@@ -11,4 +11,6 @@ public interface RbacMapper {
    List<RbacPermission> selectPermissionsByPermissionIds(List<Integer> ids);
 
    RbacUser selectUserByUsername(String username);
+
+   int updateByUsernameSelective(RbacUser record);
 }

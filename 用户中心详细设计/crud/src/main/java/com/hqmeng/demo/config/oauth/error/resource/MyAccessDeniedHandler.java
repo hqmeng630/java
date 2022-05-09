@@ -1,4 +1,4 @@
-package com.hqmeng.demo.config.oauth.error;
+package com.hqmeng.demo.config.oauth.error.resource;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hqmeng.demo.config.http.Result;

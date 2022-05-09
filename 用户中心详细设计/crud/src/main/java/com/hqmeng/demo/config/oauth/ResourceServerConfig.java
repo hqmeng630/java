@@ -1,7 +1,7 @@
 package com.hqmeng.demo.config.oauth;
 
-import com.hqmeng.demo.config.oauth.error.MyAccessDeniedHandler;
-import com.hqmeng.demo.config.oauth.error.MyAuthenticationEntryPoint;
+import com.hqmeng.demo.config.oauth.error.resource.MyAccessDeniedHandler;
+import com.hqmeng.demo.config.oauth.error.resource.MyAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;

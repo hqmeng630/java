@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BizException extends RuntimeException{
-    protected Integer errorCode;
+    protected String errorCode;
     protected String errorMsg;
 
     public BizException(ErrorEnum errorEnum) {

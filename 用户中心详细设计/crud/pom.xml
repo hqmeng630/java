@@ -32,6 +32,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>es.moki.ratelimitj</groupId>
+            <artifactId>ratelimitj-inmemory</artifactId>
+            <version>0.4.1</version>
+        </dependency>
 
         <!--oauth2和security使用spring cloud里面的组件-->
         <!--只有引入了spring cloud依赖以及版本后才会生效-->

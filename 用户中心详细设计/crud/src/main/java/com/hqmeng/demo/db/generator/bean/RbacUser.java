@@ -9,6 +9,8 @@ public class RbacUser {
 
     private String password;
 
+    private Boolean accountNonLocked;
+
     private Integer isEnabled;
 
     private String memo;
@@ -39,6 +41,14 @@ public class RbacUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
     }
 
     public Integer getIsEnabled() {

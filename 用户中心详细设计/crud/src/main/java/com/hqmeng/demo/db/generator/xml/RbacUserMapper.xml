@@ -5,13 +5,14 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="accountNonLocked" jdbcType="TINYINT" property="accountNonLocked" />
     <result column="is_enabled" jdbcType="INTEGER" property="isEnabled" />
     <result column="memo" jdbcType="VARCHAR" property="memo" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, `password`, is_enabled, memo, create_date, update_date
+    id, username, `password`, accountNonLocked, is_enabled, memo, create_date, update_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -25,11 +26,11 @@
   </delete>
   <insert id="insert" parameterType="com.hqmeng.demo.db.generator.bean.RbacUser">
     insert into rbac_user (id, username, `password`, 
-      is_enabled, memo, create_date, 
-      update_date)
+      accountNonLocked, is_enabled, memo, 
+      create_date, update_date)
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{isEnabled,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateDate,jdbcType=TIMESTAMP})
+      #{accountNonLocked,jdbcType=TINYINT}, #{isEnabled,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.hqmeng.demo.db.generator.bean.RbacUser">
     insert into rbac_user
@@ -42,6 +43,9 @@
       </if>
       <if test="password != null">
         `password`,
+      </if>
+      <if test="accountNonLocked != null">
+        accountNonLocked,
       </if>
       <if test="isEnabled != null">
         is_enabled,
@@ -66,6 +70,9 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
+      <if test="accountNonLocked != null">
+        #{accountNonLocked,jdbcType=TINYINT},
+      </if>
       <if test="isEnabled != null">
         #{isEnabled,jdbcType=INTEGER},
       </if>
@@ -89,6 +96,9 @@
       <if test="password != null">
         `password` = #{password,jdbcType=VARCHAR},
       </if>
+      <if test="accountNonLocked != null">
+        accountNonLocked = #{accountNonLocked,jdbcType=TINYINT},
+      </if>
       <if test="isEnabled != null">
         is_enabled = #{isEnabled,jdbcType=INTEGER},
       </if>
@@ -108,6 +118,7 @@
     update rbac_user
     set username = #{username,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},
+      accountNonLocked = #{accountNonLocked,jdbcType=TINYINT},
       is_enabled = #{isEnabled,jdbcType=INTEGER},
       memo = #{memo,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},

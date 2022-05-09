@@ -2,5 +2,5 @@ INSERT IGNORE INTO `oauth_client_details` (`client_id`, `resource_ids`, `client_
 INSERT IGNORE INTO `rbac_permission` (`id`, `name`, `url`, `method`, `memo`, `create_date`, `update_date`) VALUES (1, '测试接口', '/hello', 'POST', NULL, '2022-04-19 17:04:34', '2022-04-19 17:04:34');
 INSERT IGNORE INTO `rbac_role` (`id`, `name`, `memo`, `create_date`, `update_date`) VALUES (1, 'root', '超级管理员', '2022-04-19 17:03:05', '2022-04-19 17:03:05');
 INSERT IGNORE INTO `rbac_role_permission` (`id`, `role_id`, `permission_id`) VALUES (1, 1, 1);
-INSERT IGNORE INTO `rbac_user` (`id`, `username`, `password`, `is_enabled`, `memo`, `create_date`, `update_date`) VALUES (1, 'admin', '$2a$10$uoT6uCruZCBm1Vk7aYrwsuDh2f5hxuv1.APXEmkeJHHn8yNxfqMDu', 1, 'memo', '2022-04-19 17:02:11', '2022-04-19 17:02:11');
+INSERT IGNORE INTO `rbac_user` (`id`, `username`, `password`, `accountNonLocked`, `is_enabled`, `memo`, `create_date`, `update_date`) VALUES (1, 'admin', '$2a$10$uoT6uCruZCBm1Vk7aYrwsuDh2f5hxuv1.APXEmkeJHHn8yNxfqMDu', 0, 1, 'memo', '2022-04-19 17:02:11', '2022-04-19 17:02:11');
 INSERT IGNORE INTO `rbac_user_role` (`id`, `user_id`, `role_id`) VALUES (1, 1, 1);
